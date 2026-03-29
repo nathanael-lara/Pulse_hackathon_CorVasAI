@@ -12,9 +12,9 @@ Our goal was to build something that does more than track steps. We wanted to cr
 
 ---
 
-### 2. Voice of Care: The Win
+### 2. Voice of Care: The Method of Care
 
-First, we’ll show the **win moment**.
+First, we’ll show our method of care.
 
 Maria has just finished a walk. In CorVas AI, her rehab activity is logged, her progress updates, and the AI responds with supportive reinforcement tied to her physician-guided plan.
 
@@ -26,7 +26,7 @@ The key here is that the AI is not inventing medical advice. It stays grounded i
 
 ### 3. Voice of Care: The Wall
 
-Now we’ll show the **wall moment**.
+Now we’ll show how we solve the urge to quit treatment.
 
 Maria is tired, anxious, and she skipped a rehab session. This is where most patients disengage.
 
