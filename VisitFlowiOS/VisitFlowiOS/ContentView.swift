@@ -215,7 +215,7 @@ struct ContentView: View {
                 sectionLabel("MY HEALTH RECORD")
 
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-                    recordModule(icon: "pill.circle", title: "Medications", subtitle: "Schedules and reminders", destination: .medication)
+                    recordModule(icon: "pill.circle", title: "Medication", subtitle: "Schedules and reminders", destination: .medication)
                     recordModule(icon: "doc.text", title: "Documents", subtitle: "Visit summaries and labs", destination: .visit)
                     recordModule(icon: "cross.case.circle", title: "Medical Conditions", subtitle: "Screening and pre-visit checks", destination: .visit)
                     recordModule(icon: "person.2.circle", title: "Family & Support", subtitle: "Trusted circle and transport", destination: .support)

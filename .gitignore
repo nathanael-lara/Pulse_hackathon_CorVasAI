@@ -1,3 +1,14 @@
+# Secrets and local environment
+.env
+.env.local
+.env.*.local
+
+# macOS and editor noise
+.DS_Store
+.vscode/
+.idea/
+.claude/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -14,19 +25,31 @@ venv/
 env/
 ENV/
 
-# Local environment and generated helpers
-.env
-.local-bin/
+# Node and app build output
+node_modules/
+.next/
+dist/
+build/
+coverage/
+*.log
 
-# Reference repos
+# Local helpers and reference repos
+.local-bin/
 Hackathon-6/
 
-# macOS
-.DS_Store
+# Xcode / Swift
+DerivedData/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+VisitFlowiOS/.derivedData/
 
-# Editors
-.vscode/
-.idea/
-
-# Logs
-*.log
+# Workspace research and non-submission material
+Radiant_Shaders_and_Effects/
+data/audio/
+data/transcripts/
+docs/ideas/
+docs/transcripts/
+handoff.md
+prompt.md
+website-design-prompt.md
