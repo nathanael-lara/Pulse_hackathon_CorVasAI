@@ -14,8 +14,12 @@ venv/
 env/
 ENV/
 
-# Audio and transcripts generated locally
-transcripts/
+# Local environment and generated helpers
+.env
+.local-bin/
+
+# Reference repos
+Hackathon-6/
 
 # macOS
 .DS_Store

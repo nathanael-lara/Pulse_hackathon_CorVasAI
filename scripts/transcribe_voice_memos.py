@@ -6,9 +6,9 @@ Supports a single file or a directory of files. Apple Voice Memos are commonly
 stored as .m4a, but Whisper can also handle other common audio/video formats.
 
 Examples:
-    python3 transcribe_voice_memos.py recording.m4a
-    python3 transcribe_voice_memos.py ./voice-memos --model base
-    python3 transcribe_voice_memos.py ./voice-memos --output-dir ./transcripts
+    python3 scripts/transcribe_voice_memos.py data/audio/recording.m4a
+    python3 scripts/transcribe_voice_memos.py data/audio --model base
+    python3 scripts/transcribe_voice_memos.py data/audio --output-dir data/transcripts
 
 Install:
     pip install openai-whisper
