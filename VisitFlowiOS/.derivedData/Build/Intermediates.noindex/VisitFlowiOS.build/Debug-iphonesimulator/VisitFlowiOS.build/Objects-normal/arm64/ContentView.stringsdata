@@ -7,7 +7,7 @@
         "key": "CARDIAC RECOVERY RECORD",
         "location": {
           "startingColumn": 26,
-          "startingLine": 130
+          "startingLine": 140
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "CorVas",
         "location": {
           "startingColumn": 30,
-          "startingLine": 123
+          "startingLine": 133
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": " AI",
         "location": {
           "startingColumn": 30,
-          "startingLine": 126
+          "startingLine": 136
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "Maria Santos",
         "location": {
           "startingColumn": 26,
-          "startingLine": 188
+          "startingLine": 198
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "Week 3 cardiac recovery",
         "location": {
           "startingColumn": 26,
-          "startingLine": 192
+          "startingLine": 202
         }
       },
       {
@@ -47,7 +47,7 @@
         "key": "M",
         "location": {
           "startingColumn": 34,
-          "startingLine": 180
+          "startingLine": 190
         }
       },
       {
@@ -55,7 +55,7 @@
         "key": "Heart Rate",
         "location": {
           "startingColumn": 31,
-          "startingLine": 220
+          "startingLine": 230
         }
       },
       {
@@ -63,7 +63,7 @@
         "key": "74",
         "location": {
           "startingColumn": 30,
-          "startingLine": 227
+          "startingLine": 237
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "BEATS / MIN.",
         "location": {
           "startingColumn": 30,
-          "startingLine": 230
+          "startingLine": 240
         }
       },
       {
@@ -79,7 +79,79 @@
         "key": "•",
         "location": {
           "startingColumn": 34,
-          "startingLine": 284
+          "startingLine": 294
+        }
+      },
+      {
+        "comment": "",
+        "key": "Current symptoms",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 362
+        }
+      },
+      {
+        "comment": "",
+        "key": "•",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 372
+        }
+      },
+      {
+        "comment": "",
+        "key": "Questions for the doctor",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 382
+        }
+      },
+      {
+        "comment": "",
+        "key": "CardioVoice preview",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 403
+        }
+      },
+      {
+        "comment": "",
+        "key": "SpO₂ today: %lld%%",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 406
+        }
+      },
+      {
+        "comment": "",
+        "key": "Plain-language visit summary",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 441
+        }
+      },
+      {
+        "comment": "",
+        "key": "•",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 451
+        }
+      },
+      {
+        "comment": "",
+        "key": "Saved moments",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 461
+        }
+      },
+      {
+        "comment": "",
+        "key": "No saved moments yet. Use Save above to pin key physician guidance.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 466
         }
       },
       {
@@ -87,7 +159,7 @@
         "key": "Medication status",
         "location": {
           "startingColumn": 34,
-          "startingLine": 402
+          "startingLine": 560
         }
       },
       {
@@ -95,7 +167,7 @@
         "key": "Week %lld",
         "location": {
           "startingColumn": 26,
-          "startingLine": 428
+          "startingLine": 586
         }
       },
       {
@@ -103,7 +175,7 @@
         "key": "•",
         "location": {
           "startingColumn": 34,
-          "startingLine": 454
+          "startingLine": 612
         }
       },
       {
@@ -111,7 +183,7 @@
         "key": "%lld min • target HR < %lld",
         "location": {
           "startingColumn": 34,
-          "startingLine": 476
+          "startingLine": 634
         }
       },
       {
@@ -119,7 +191,7 @@
         "key": "%@ · %@",
         "location": {
           "startingColumn": 38,
-          "startingLine": 467
+          "startingLine": 625
         }
       },
       {
@@ -127,7 +199,7 @@
         "key": "%@ steps • avg HR %lld",
         "location": {
           "startingColumn": 38,
-          "startingLine": 516
+          "startingLine": 674
         }
       },
       {
@@ -135,7 +207,7 @@
         "key": "Patients can be matched to a provider and a trusted transport option based on ZIP 10024 and the physician's current care plan.",
         "location": {
           "startingColumn": 22,
-          "startingLine": 539
+          "startingLine": 697
         }
       },
       {
@@ -143,7 +215,7 @@
         "key": "Support need",
         "location": {
           "startingColumn": 24,
-          "startingLine": 557
+          "startingLine": 715
         }
       },
       {
@@ -151,7 +223,7 @@
         "key": "ZIP CODE",
         "location": {
           "startingColumn": 26,
-          "startingLine": 544
+          "startingLine": 702
         }
       },
       {
@@ -159,7 +231,7 @@
         "key": "ZIP code",
         "location": {
           "startingColumn": 31,
-          "startingLine": 548
+          "startingLine": 706
         }
       },
       {
@@ -167,7 +239,7 @@
         "key": "•",
         "location": {
           "startingColumn": 30,
-          "startingLine": 578
+          "startingLine": 736
         }
       },
       {
@@ -175,7 +247,7 @@
         "key": "%lld min away • %@",
         "location": {
           "startingColumn": 42,
-          "startingLine": 619
+          "startingLine": 777
         }
       },
       {
@@ -183,7 +255,7 @@
         "key": "%.1f mi",
         "location": {
           "startingColumn": 46,
-          "startingLine": 609
+          "startingLine": 767
         }
       },
       {
@@ -191,7 +263,7 @@
         "key": "%.1f mi • %@ • %lld seats",
         "location": {
           "startingColumn": 38,
-          "startingLine": 657
+          "startingLine": 815
         }
       },
       {
@@ -199,7 +271,7 @@
         "key": "%.1f miles • %lld min away",
         "location": {
           "startingColumn": 38,
-          "startingLine": 688
+          "startingLine": 846
         }
       },
       {
@@ -207,7 +279,7 @@
         "key": "ACTIVE",
         "location": {
           "startingColumn": 22,
-          "startingLine": 809
+          "startingLine": 967
         }
       },
       {
@@ -215,7 +287,7 @@
         "key": "HEALTH RECORD",
         "location": {
           "startingColumn": 22,
-          "startingLine": 903
+          "startingLine": 1061
         }
       }
     ]

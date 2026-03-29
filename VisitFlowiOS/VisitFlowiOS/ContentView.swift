@@ -22,12 +22,22 @@ struct ContentView: View {
     @State private var currentBullets: [String] = MockData.visitBullets[MockData.visitLines[0].id] ?? []
     @State private var visitStatusMessage: String = "Tap a transcript line to view grounded guidance from the physician's exact advice."
     @State private var savedMoments: Set<String> = []
+    @State private var visitQuestions: [String] = ["What symptoms should I report before the next visit?"]
+    @State private var visitBriefMessage: String = "Pre-visit prep can bundle symptoms, questions, and CardioVoice screening into one brief."
+    @State private var visitSpO2: Int = 95
+    @State private var followUpAdded: Bool = false
     @State private var medications: [MedicationItem] = MockData.medications
     @State private var medicationBanner: String = "Medication reminders can be marked taken and saved to the calendar."
     @State private var supportStatus: String = "Support matches are ready for ZIP 10024."
 
     private var weekPlan: RehabWeekPlan {
         MockData.rehabPlans.first(where: { $0.id == selectedWeek }) ?? MockData.rehabPlans[2]
+    }
+
+    private var savedVisitTexts: [String] {
+        MockData.visitLines
+            .filter { savedMoments.contains($0.id) }
+            .map(\.text)
     }
 
     private var supportBullets: [String] {
@@ -339,6 +349,154 @@ struct ContentView: View {
                         visitStatusMessage = "Saved this physician moment for post-visit review."
                     } label: {
                         actionButtonLabel(savedMoments.contains(selectedLine.id) ? "Saved" : "Save")
+                    }
+                    .buttonStyle(.plain)
+                }
+                .padding(.top, 14)
+            }
+
+            card {
+                sectionLabel("PRE-VISIT PREP")
+
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Current symptoms")
+                        .font(.system(size: 20, weight: .medium))
+                        .foregroundStyle(Palette.textPrimary)
+
+                    ForEach([
+                        "Shortness of breath on stairs",
+                        "Mild fatigue lasting more than one week",
+                        "New rhythm medication started this week"
+                    ], id: \.self) { symptom in
+                        HStack(alignment: .top, spacing: 10) {
+                            Text("•")
+                                .foregroundStyle(Palette.lavender)
+                            Text(symptom)
+                                .font(.system(size: 18))
+                                .foregroundStyle(Palette.textPrimary)
+                        }
+                    }
+                }
+
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Questions for the doctor")
+                        .font(.system(size: 20, weight: .medium))
+                        .foregroundStyle(Palette.textPrimary)
+
+                    ForEach(visitQuestions, id: \.self) { question in
+                        Text(question)
+                            .font(.system(size: 18))
+                            .foregroundStyle(Palette.textMuted)
+                            .padding(14)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(Color.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 18))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 18)
+                                    .stroke(Palette.line, lineWidth: 1)
+                            )
+                    }
+                }
+                .padding(.top, 14)
+
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("CardioVoice preview")
+                        .font(.system(size: 20, weight: .medium))
+                        .foregroundStyle(Palette.textPrimary)
+                    Text("SpO₂ today: \(visitSpO2)%")
+                        .font(.system(size: 18))
+                        .foregroundStyle(Palette.textMuted)
+                }
+                .padding(.top, 14)
+
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 2), spacing: 10) {
+                    Button {
+                        visitQuestions.append("Does today’s breathlessness change my rehab pace?")
+                        visitBriefMessage = "Added a new doctor-facing question to the visit brief."
+                    } label: {
+                        actionButtonLabel("Add question", filled: true)
+                    }
+                    .buttonStyle(.plain)
+
+                    Button {
+                        visitSpO2 = max(92, visitSpO2 - 1)
+                        visitBriefMessage = "CardioVoice preview rerun with current SpO₂ and symptom context."
+                    } label: {
+                        actionButtonLabel("Run CardioVoice")
+                    }
+                    .buttonStyle(.plain)
+                }
+                .padding(.top, 14)
+
+                Text(visitBriefMessage)
+                    .font(.system(size: 16))
+                    .foregroundStyle(Palette.textMuted)
+                    .padding(.top, 12)
+            }
+
+            card {
+                sectionLabel("POST-VISIT FOLLOW-UP")
+
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Plain-language visit summary")
+                        .font(.system(size: 20, weight: .medium))
+                        .foregroundStyle(Palette.textPrimary)
+
+                    ForEach([
+                        "Mild arrhythmia is still present and should be monitored.",
+                        "Metoprolol 25 mg starts every morning with food.",
+                        "Keep rehab heart rate under 120 BPM and stop with chest tightness."
+                    ], id: \.self) { point in
+                        HStack(alignment: .top, spacing: 10) {
+                            Text("•")
+                                .foregroundStyle(Palette.lavender)
+                            Text(point)
+                                .font(.system(size: 18))
+                                .foregroundStyle(Palette.textPrimary)
+                        }
+                    }
+                }
+
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Saved moments")
+                        .font(.system(size: 20, weight: .medium))
+                        .foregroundStyle(Palette.textPrimary)
+
+                    if savedVisitTexts.isEmpty {
+                        Text("No saved moments yet. Use Save above to pin key physician guidance.")
+                            .font(.system(size: 18))
+                            .foregroundStyle(Palette.textMuted)
+                    } else {
+                        ForEach(savedVisitTexts, id: \.self) { moment in
+                            Text(moment)
+                                .font(.system(size: 18))
+                                .foregroundStyle(Palette.textMuted)
+                                .padding(14)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background(Color.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 18))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 18)
+                                        .stroke(Palette.line, lineWidth: 1)
+                                )
+                        }
+                    }
+                }
+                .padding(.top, 14)
+
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 2), spacing: 10) {
+                    Button {
+                        followUpAdded = true
+                        visitBriefMessage = "Follow-up on April 12 was added to the calendar."
+                    } label: {
+                        actionButtonLabel(followUpAdded ? "Added" : "Add follow-up", filled: true)
+                    }
+                    .buttonStyle(.plain)
+
+                    Button {
+                        selectedTab = .medication
+                    } label: {
+                        actionButtonLabel("Open meds")
                     }
                     .buttonStyle(.plain)
                 }
