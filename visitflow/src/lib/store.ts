@@ -86,7 +86,7 @@ interface AppState {
   completeRecoverySession: (sessionId: string) => void;
   logRecoverySetback: (reason: RecoverySetback['reason'], note: string) => void;
   addSymptomCheckIn: (payload: Omit<SymptomCheckIn, 'id' | 'createdAt'>) => void;
-  addSupportMessage: (body: string, contactId?: string, urgent?: boolean) => void;
+  addSupportMessage: (body: string, contactId?: string, urgent?: boolean, responseOverride?: string) => void;
   sendEscalationOutreach: (params: {
     contactId: string;
     summary: string;
@@ -276,7 +276,7 @@ export const useAppStore = create<AppState>()(
           };
         }),
 
-      addSupportMessage: (body, contactId, urgent) =>
+      addSupportMessage: (body, contactId, urgent, responseOverride) =>
         set((state) => {
           const contactName = state.contacts.find((contact) => contact.id === contactId)?.name;
           const patientMessage = {
@@ -294,9 +294,10 @@ export const useAppStore = create<AppState>()(
             contactId,
             urgent,
             createdAt: new Date().toISOString(),
-            body: urgent
-              ? `I marked this as urgent and moved it to the top for ${contactName ?? 'the care team'}. If symptoms feel severe right now, call immediately.`
-              : `Your update is ready for ${contactName ?? 'the care team'}. You can keep using this thread if anything changes.`,
+            body: responseOverride
+              ?? (urgent
+                ? `I marked this as urgent and moved it to the top for ${contactName ?? 'the care team'}. If symptoms feel severe right now, call immediately.`
+                : `Your update is ready for ${contactName ?? 'the care team'}. You can keep using this thread if anything changes.`),
           };
 
           return {

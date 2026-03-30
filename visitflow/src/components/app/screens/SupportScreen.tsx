@@ -456,11 +456,29 @@ export function SupportScreen({
                       <div className="mt-3">
                         <SecondaryButton
                           onClick={() => {
-                            addSupportMessage(`I would like help setting up ${option.name.toLowerCase()} for my appointments.`, selectedContactId, false);
-                            setSupportNotice(`${option.name} was added to your support thread.`);
+                            const request =
+                              option.type === 'telehealth-fallback'
+                                ? `Please help me switch my next follow-up to video if it is clinically okay.`
+                                : `Please help me arrange ${option.name.toLowerCase()} for my next visit.`;
+                            const followUp =
+                              option.type === 'telehealth-fallback'
+                                ? 'We sent a video-visit request to your care team. This thread will update when they confirm whether the visit can be converted.'
+                                : `We sent a ride-support request for ${option.name}. This thread will update when scheduling is confirmed.`;
+                            addSupportMessage(request, selectedContactId, false, followUp);
+                            setSupportNotice(
+                              option.type === 'telehealth-fallback'
+                                ? 'Video follow-up request sent.'
+                                : `${option.name} request sent.`
+                            );
                           }}
                         >
-                          Ask for this option
+                          {option.type === 'community-van'
+                            ? 'Ask for van pickup'
+                            : option.type === 'rideshare-support'
+                              ? 'Request ride credit'
+                              : option.type === 'telehealth-fallback'
+                                ? 'Switch to video visit'
+                                : 'Request ride help'}
                         </SecondaryButton>
                       </div>
                     </div>
@@ -488,11 +506,17 @@ export function SupportScreen({
                     <div className="mt-3 flex flex-col gap-3 sm:flex-row">
                       <SecondaryButton
                         onClick={() => {
-                          addSupportMessage(`Please help me follow up with ${provider.name}.`, selectedContactId, false);
-                          setSupportNotice(`${provider.name} was added to your support thread.`);
+                          const request = provider.offersVideo
+                            ? `Please help me follow up with ${provider.name}. If possible, I would like the video option.`
+                            : `Please help me arrange a follow-up with ${provider.name}.`;
+                          const followUp = provider.offersVideo
+                            ? `${provider.name} was added to your thread. We asked about a video follow-up and will update this conversation when the care team confirms.`
+                            : `${provider.name} was added to your thread for follow-up planning. We will update this conversation when scheduling is confirmed.`;
+                          addSupportMessage(request, selectedContactId, false, followUp);
+                          setSupportNotice(`Follow-up request sent for ${provider.name}.`);
                         }}
                       >
-                        Request follow-up
+                        {provider.offersVideo ? 'Request follow-up or video' : 'Request follow-up'}
                       </SecondaryButton>
                       {provider.videoLink ? (
                         <a
@@ -522,11 +546,27 @@ export function SupportScreen({
                     <div className="mt-3">
                       <SecondaryButton
                         onClick={() => {
-                          addSupportMessage(`Please connect me with ${member.name} for support around visits or recovery.`, selectedContactId, false);
-                          setSupportNotice(`${member.name} was added to your support thread.`);
+                          const request =
+                            member.role === 'volunteer-driver'
+                              ? `Please connect me with ${member.name} for ride support to visits, rehab, or the pharmacy.`
+                              : member.role === 'care-coach'
+                                ? `Please connect me with ${member.name} for coaching and question prep support.`
+                                : `Please connect me with ${member.name} for support around rides and recovery.`;
+                          const followUp =
+                            member.role === 'volunteer-driver'
+                              ? `We sent a ride-support connection request to ${member.name}. If they accept, they will appear in your support thread for scheduling.`
+                              : member.role === 'care-coach'
+                                ? `We sent a coaching connection request to ${member.name}. If they accept, they will appear in your support thread for phone or video follow-up.`
+                                : `We sent a support connection request to ${member.name}. If they accept, they will appear in your support thread.`;
+                          addSupportMessage(request, selectedContactId, false, followUp);
+                          setSupportNotice(`Connection request sent to ${member.name}.`);
                         }}
                       >
-                        Ask for this support
+                        {member.role === 'volunteer-driver'
+                          ? `Request ${member.name.split(' ')[0]} for a ride`
+                          : member.role === 'care-coach'
+                            ? `Message ${member.name.split(' ')[0]} for coaching`
+                            : `Connect me with ${member.name.split(' ')[0]}`}
                       </SecondaryButton>
                     </div>
                   </div>
