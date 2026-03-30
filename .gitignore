@@ -53,3 +53,6 @@ docs/transcripts/
 handoff.md
 prompt.md
 website-design-prompt.md
+
+# Local Netlify folder
+.netlify

@@ -1,0 +1,7 @@
+[build]
+  base = "visitflow"
+  command = "npm run build"
+  publish = "visitflow/.next"
+
+[build.environment]
+  NODE_VERSION = "20"
